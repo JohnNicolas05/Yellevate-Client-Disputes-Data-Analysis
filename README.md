@@ -17,7 +17,7 @@ Yellevate, a company which specializes in providing marketing services to other 
 **1.A. Create a table in SQL using the query below. Import the file yellevate_invoices.csv to the created table.**
 
 SQL Syntax:
-```sh
+```sql
 CREATE TABLE IF NOT EXISTS yellevate_invoices(
 country varchar,
 customerID varchar,
@@ -37,7 +37,7 @@ DaysLate integer
 **1.C. Finding the average processing time in which invoices are settled (in days):**
 
 SQL syntax:
-```sh
+```sql
 SELECT ROUND(AVG(DaysToSettle)) AS avg_days_settled 
 FROM yellevate_invoices;
 ```
@@ -46,7 +46,7 @@ FROM yellevate_invoices;
 **1.D. Finding the processing time for the company to settle disputes (in days):**
 
 SQL syntax:
-```sh
+```sql
 SELECT ROUND(AVG(daystosettle)) as avg_processing_time
 FROM yellevate_invoices
 WHERE disputed = 1 AND disputelost = 0;
@@ -56,7 +56,7 @@ WHERE disputed = 1 AND disputelost = 0;
 **1.E. Finding the percentage of disputes received by the company that were lost:**
 
 SQL syntax:
-```sh
+```sql
 SELECT ROUND((SUM(disputelost)/COUNT(disputed))*100, 2) AS percent_dispute_lost
 FROM yellevate_invoices
 WHERE disputed = 1;
@@ -66,7 +66,7 @@ WHERE disputed = 1;
 **1.F. Finding the percentage of revenue lost from disputes:**
 
 SQL syntax:
-```sh
+```sql
 SELECT ROUND((SUM(CASE WHEN disputelost = 1 THEN invoiceamount ELSE 0 END)/SUM(invoiceamount))*100, 2) as percent_revenue_lost
 FROM yellevate_invoices;
 ```
@@ -75,7 +75,7 @@ FROM yellevate_invoices;
 **1.G. Finding the country where the company reached the highest losses from lost disputes (in USD):**
 
 SQL syntax:
-```sh
+```sql
 SELECT country, SUM(CASE WHEN disputelost = 1 THEN invoiceamount else 0 END) as total_loss
 FROM yellevate_invoices
 WHERE disputed = 1
