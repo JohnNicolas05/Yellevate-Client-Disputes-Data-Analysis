@@ -1,3 +1,5 @@
+Project duration: March 16, 2023 - March 30, 2023
+
 ### The Analytics Team:
 
 **John Nicolas** - *the team lead* 
